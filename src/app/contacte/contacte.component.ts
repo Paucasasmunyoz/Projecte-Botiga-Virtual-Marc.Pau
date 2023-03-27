@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
-
-interface CaptchaResponse {
-  success: boolean;
+export interface FormModel {
+  captcha?: string;
 }
 
 @Component({
@@ -16,18 +15,24 @@ export class ContacteComponent {
 
   formulario: FormGroup;
   formularioEnviado = false;
-  captchaResponse: string = '';
+  captchaClick = false;
+  formModel: FormModel = {};
+  siteKey = '6LfZPjglAAAAAOAAQmNJ_6TriWMee1qYZtu8M8Ex';
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.formulario = this.formBuilder.group({
       nombre: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      mensaje: ['', Validators.required]
-
+      mensaje: ['', Validators.required],
+      captcha: ['', Validators.required]
     });
   }
 
-  onSubmit() {
+  Captcha(): void {
+    this.captchaClick = true;
+  }
+
+  onSubmit(): void {
     this.http.post('http://localhost:3070/contacte', this.formulario.value)
       .subscribe(
         (response) => {

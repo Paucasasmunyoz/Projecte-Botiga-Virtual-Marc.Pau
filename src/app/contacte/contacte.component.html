@@ -1,6 +1,7 @@
 <app-menu></app-menu>
 <app-navegacio></app-navegacio>
 <article xmlns="http://www.w3.org/1999/html">
+  <script src="https://www.google.com/recaptcha/api.js?render=explicit"></script>
 
   <h1>Contacte</h1>
   <br/><br/>
@@ -14,20 +15,24 @@
 
   <h2>Formulari de contacte</h2>
   <form [formGroup]="formulario" (ngSubmit)="onSubmit()" method="POST" action="submit">
-    <label for="nombre">nombre:  </label>
+    <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" formControlName="nombre"><br><br>
 
-    <label for="correo">correo:  </label>
+    <label for="correo">Correo:</label>
     <input type="email" id="correo" formControlName="correo"><br><br>
 
-    <label for="mensaje">mensaje:  </label>
+    <label for="mensaje">Mensaje:</label>
     <textarea id="mensaje" formControlName="mensaje"></textarea><br><br>
 
+    <re-captcha formControlName="captcha" siteKey="6LfZPjglAAAAAOAAQmNJ_6TriWMee1qYZtu8M8Ex" (resolved)="Captcha()"></re-captcha>
 
-    <button type="submit">Enviar</button>
+    <button [disabled]="!captchaClick" type="submit">Enviar</button>
     <div *ngIf="formularioEnviado" class="mensaje-confirmacion">El formulario se ha enviado correctamente. Gracias por contactarnos.</div>
 
   </form>
+
+
+
 
 
 
