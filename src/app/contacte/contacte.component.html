@@ -1,6 +1,7 @@
 <app-menu></app-menu>
 <app-navegacio></app-navegacio>
 <article xmlns="http://www.w3.org/1999/html">
+
   <h1>Contacte</h1>
   <br/><br/>
   Té alguna pregunta sobre el vostre compte, comanda,
@@ -11,60 +12,26 @@
   Correu electronic: mycreatine@gmail.com<br/>
   Adreça: Institut Vidreres <br/><br/><br/><br/>
 
-  <a>Seleccioni la pregunta corresponen:</a><br/><br/>
-  <div class="container">
-    <section id="Menu1">
-      <a href="#Menu1">Com sabré quan s'ha enviat la meva comanda?</a>
-      <p>T'enviarem un correu electrònic tan aviat com la teva comanda estigui en camí! També
-        podeu fer un seguiment a través del vostre compte. A més, enviem els articles per separat per assegurar-nos que els rebis com més aviat millor.</p>
-    </section>
+  <h2>Formulari de contacte</h2>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()" method="POST" action="submit">
+    <label for="nombre">nombre:  </label>
+    <input type="text" id="nombre" formControlName="nombre"><br><br>
 
-    <section id="Menu2">
-      <a href="#Menu2">¿Com cancel·lo la meva comanda?</a>
-      <p>Sentim escoltar això.<br/><br/>
+    <label for="correo">correo:  </label>
+    <input type="email" id="correo" formControlName="correo"><br><br>
 
-        Podem ajudar-te d'alguna manera perquè no ho hagis de fer? Pots posar-te en contacte amb Atenció al Client des del teu compte.<br/><br/>
-
-        <br/><br/>
-        Consulta la nostra Política de Devolucions per ajudar-te a tornar la comanda.
-      </p>
-    </section>
+    <label for="mensaje">mensaje:  </label>
+    <textarea id="mensaje" formControlName="mensaje"></textarea><br><br>
 
 
-    <section id="Menu3">
-      <a href="#Menu3">He rebut un article defectuós. Què he de fer?</a>
-      <p>Lamentem el que ha passat ja que estem molt orgullosos dels nostres productes.<br/><br/>
+    <button type="submit">Enviar</button>
+    <div *ngIf="formularioEnviado" class="mensaje-confirmacion">El formulario se ha enviado correctamente. Gracias por contactarnos.</div>
 
-        Perquè puguem ajudar-te amb el que ha passat, si us plau posa't en contacte amb nosaltres.<br/><br/>
-
-        <br/><br/>
-        1. Numero de comanda<br/><br/>
-
-        2. Nom del producte<br/><br/>
-
-        3. Detalls del defecte<br/><br/>
-
-        4. Imatges del producte, si fossin necessàries<br/><br/>
+  </form>
 
 
 
-        Tan ràpid com hàgim examinat els detalls us enviarem un correu electrònic amb el resultat.</p>
-    </section>
 
-    <section id="Menu4">
-      <a href="#Menu4">Com puc pagar la meva comanda?</a>
-      <p>Oferim una varietat de mètodes de pagament en línia per assegurar-nos que els nostres clients poden accedir
-        als millors productes de nutrició esportiva amb facilitat.</p>
-    </section>
-
-    <section id="Menu5">
-      <a href="#Menu5">Què passa si no sóc a casa per rebre el meu paquet?</a>
-      <p>No et preocupis. Si el paquet no cap a la bústia o requereix la vostra signatura, el repartidor us deixarà una nota d'avís.<br/><br/>
-
-        Aquesta nota t'informarà on és el teu paquet i com el pots recollir.</p>
-    </section>
-
-  </div>
 </article>
 
 <app-peu-pagina></app-peu-pagina>
